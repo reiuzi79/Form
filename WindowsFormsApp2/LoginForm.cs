@@ -13,20 +13,17 @@ namespace 身份证信息管理系统
 {
     public partial class LoginForm : Form
     {
+        private string _acc;
+
         public LoginForm()
         {
             InitializeComponent();
-            Random random = new Random();
-            int minV = 12345, maxV = 98765;
-            check.Text = random.Next(minV, maxV).ToString();
-
+            check.Text = CheckCode.Code();   //生成验证码
         }
 
         private void check_Click(object sender, EventArgs e)
         {
-            Random random = new Random();
-            int minV = 12345, maxV = 98765;
-            check.Text = random.Next(minV, maxV).ToString();
+            check.Text = CheckCode.Code();
         }
 
         private void cancel_Click(object sender, EventArgs e)
@@ -39,62 +36,37 @@ namespace 身份证信息管理系统
             RegisterForm register = new RegisterForm();
             register.ShowDialog();
         }
-        private string Acc;
-        public string acc
-        {
-            get { return Acc; }
-            set { Acc = value; }
-        }
         private void login_Click(object sender, EventArgs e)
         {
             try
             {
-                string userid = account.Text.Trim();
-                string password = psw.Text.Trim();
-                string connStr = @"Data Source=" + @"Data\Account.db;Initial Catalog=sqlite;Integrated Security=True;Max Pool Size=10";
-                SQLiteConnection con = new SQLiteConnection(connStr);
-                con.Open();
-                SQLiteCommand checkCmd = con.CreateCommand();
-                string s1 = "select Account,Password from Accounts where Account='" + userid + "' and Password='" + password + "'";
-                checkCmd.CommandText = s1;
-                SQLiteDataAdapter ada = new SQLiteDataAdapter();
-                ada.SelectCommand = checkCmd;
-                DataSet ds = new DataSet();
-                int n = ada.Fill(ds, "Accounts");
-                if (n != 0)
+                if (checkcode.Text == check.Text)
                 {
-                    if (checkcode.Text == check.Text)
+                    string Account = account.Text.Trim();
+                    string Password = psw.Text.Trim();
+                    LoginBLL BLL = new LoginBLL(Account, Password); //扔给BLL处理，只需告诉UI是否登录成功
+                    if(BLL.Validate()==true)    //验证通过
                     {
-                        string s2 = "select Nickname from Accounts where Account='" + userid + "'";
-                        checkCmd.CommandText = s2;
-                        ada.SelectCommand = checkCmd;
-                        DataTable dt = new DataTable();
-                        ada.Fill(dt);
-                        string nickname = dt.Rows[0][0].ToString();
-                        MessageBox.Show("登录成功，欢迎" + nickname + "用户使用");
-                        acc = userid;
-                        this.DialogResult = DialogResult.OK;
+                        MessageBox.Show("登录成功，欢迎" + LoginBLL.User.Nickname + "用户使用");
+                        Acc = Account;
+                        this.DialogResult = DialogResult.OK;  //启动主窗体
                     }
                     else
                     {
-                        MessageBox.Show("验证码错误");
+                        MessageBox.Show("用户名或密码有错误!");
+                        account.Text = "";
+                        psw.Text = "";
                         checkcode.Text = "";
-                        checkcode.Focus();
-                        Random random = new Random();
-                        int minV = 12345, maxV = 98765;
-                        check.Text = random.Next(minV, maxV).ToString();
+                        account.Focus();
+                        check.Text = CheckCode.Code();
                     }
                 }
                 else
                 {
-                    MessageBox.Show("用户名或密码有错误!");
-                    account.Text = "";
-                    psw.Text = "";
-                    account.Focus();
-                    Random random = new Random();
-                    int minV = 12345, maxV = 98765;
-                    check.Text = random.Next(minV, maxV).ToString();
+                    MessageBox.Show("验证码错误");
                     checkcode.Text = "";
+                    checkcode.Focus();
+                    check.Text = CheckCode.Code();
                 }
             }
             catch (Exception ex)
@@ -102,8 +74,14 @@ namespace 身份证信息管理系统
                 MessageBox.Show("登录失败，错误信息：\n" + ex);
             }
         }
+
+
+
+
         Point mouseOff;//鼠标移动位置变量
         bool leftFlag;//标签是否为左键
+
+        public string Acc { get => _acc; set => _acc = value; }
 
         private void LoginForm_MouseDown(object sender, MouseEventArgs e)
         {
