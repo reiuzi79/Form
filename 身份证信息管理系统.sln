@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28809.33
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "身份证信息管理系统", "WindowsFormsApp2\身份证信息管理系统.csproj", "{6C835853-C8EB-4A1D-8071-D4490E987485}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6C835853-C8EB-4A1D-8071-D4490E987485}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C835853-C8EB-4A1D-8071-D4490E987485}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C835853-C8EB-4A1D-8071-D4490E987485}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C835853-C8EB-4A1D-8071-D4490E987485}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F6B1FE26-A38F-4724-B6F3-7E2C1E0AAB8C}
+	EndGlobalSection
+EndGlobal
