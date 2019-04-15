@@ -30,13 +30,21 @@ namespace 身份证信息管理系统
             get { return Acc1; }
             set { Acc1 = value; }
         }
-        DataSet ds = new DataSet();
         DataTable dt = new DataTable();
         public MainForm(string acc)
         {
             InitializeComponent();
             acc1 = acc;
             reFresh();
+        }
+        internal void setDATSizeMode() //设置DataGridView控件列尺寸以适应数据
+        {
+            DAT.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            DAT.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            DAT.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            DAT.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            DAT.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            DAT.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
         }
         internal void reFresh()
         {
@@ -51,29 +59,10 @@ namespace 身份证信息管理系统
                 button3.Enabled = false;
                 ac.Text += "，为普通用户，无法使用删改功能";
             }
-
-            int i = Data.ExecuteNoQuery("delete from admin where AGE > 150");   //删除大于150岁的人
-            ds = Data.ExecuteDataSet("select ID from admin");
-            dt = ds.Tables[0];
-            string updatecom;
-            INFOR INFO = new INFOR();
-            foreach (DataRow dr in dt.Rows)
-            {
-                string temp = dr["ID"].ToString();
-                INFO = dllin(temp + "\0");
-                updatecom = "update admin set AGE = '" + INFO.age + "' where ID = '" + temp + "'";
-                Data.ExecuteNoQuery(updatecom);
-            }
-            ds = Data.ExecuteDataSet("select * from admin");
-            dt = ds.Tables[0];
-            DAT.DataSource = dt;
-            DAT.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            DAT.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            DAT.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            DAT.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            DAT.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            DAT.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            label2.Text = "有" + dt.Rows.Count + "条记录";
+            var BLL = new MainBLL();
+            DAT.DataSource = BLL.Refresh();
+            setDATSizeMode();
+            label2.Text = "有" + DAT.RowCount + "条记录";
         }
         private void 刷新ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -112,12 +101,7 @@ namespace 身份证信息管理系统
                 dsflag = false;
                 dt = ds2.Tables[0];
                 DAT.DataSource = dt;
-                DAT.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                DAT.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                DAT.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                DAT.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                DAT.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                DAT.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                setDATSizeMode();
                 label2.Text = "有" + dt.Rows.Count + "条记录";
             }
         }

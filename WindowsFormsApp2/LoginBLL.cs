@@ -25,14 +25,21 @@ namespace 身份证信息管理系统
         }
         public bool Validate()
         {
-            var DAL = new LoginDAL();
-            if(DAL.Access(user.Account, user.Password)==true)
+            try
             {
-                return true;
+                var DAL = new LoginDAL();
+                if (DAL.Access(user.Account, user.Password) == true)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
-            else
+            catch(Exception ex)
             {
-                return false;
+                throw ex;
             }
         }
     }

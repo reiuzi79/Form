@@ -29,7 +29,7 @@ namespace 身份证信息管理系统
             }
             catch(IOException ex)
             {
-                MessageBox.Show("发生严重错误");
+                MessageBox.Show("发生严重错误:"+ex);
                 Application.Exit();
             }
             Application.EnableVisualStyles();

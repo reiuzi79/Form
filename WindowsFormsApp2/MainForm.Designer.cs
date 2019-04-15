@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.菜单ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,8 +45,10 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.dataBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DAT)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -56,7 +59,7 @@
             this.关于ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1350, 25);
+            this.menuStrip1.Size = new System.Drawing.Size(1350, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -65,7 +68,7 @@
             this.菜单ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.退出ToolStripMenuItem});
             this.菜单ToolStripMenuItem.Name = "菜单ToolStripMenuItem";
-            this.菜单ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
+            this.菜单ToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
             this.菜单ToolStripMenuItem.Text = "菜单";
             // 
             // 退出ToolStripMenuItem
@@ -78,7 +81,7 @@
             // 刷新ToolStripMenuItem
             // 
             this.刷新ToolStripMenuItem.Name = "刷新ToolStripMenuItem";
-            this.刷新ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
+            this.刷新ToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
             this.刷新ToolStripMenuItem.Text = "刷新";
             this.刷新ToolStripMenuItem.Click += new System.EventHandler(this.刷新ToolStripMenuItem_Click);
             // 
@@ -88,20 +91,20 @@
             this.关于本系统ToolStripMenuItem,
             this.帮助ToolStripMenuItem});
             this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
-            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
+            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
             this.关于ToolStripMenuItem.Text = "关于";
             // 
             // 关于本系统ToolStripMenuItem
             // 
             this.关于本系统ToolStripMenuItem.Name = "关于本系统ToolStripMenuItem";
-            this.关于本系统ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.关于本系统ToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.关于本系统ToolStripMenuItem.Text = "关于本系统";
             this.关于本系统ToolStripMenuItem.Click += new System.EventHandler(this.关于本系统ToolStripMenuItem_Click);
             // 
             // 帮助ToolStripMenuItem
             // 
             this.帮助ToolStripMenuItem.Name = "帮助ToolStripMenuItem";
-            this.帮助ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.帮助ToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.帮助ToolStripMenuItem.Text = "帮助";
             this.帮助ToolStripMenuItem.Click += new System.EventHandler(this.帮助ToolStripMenuItem_Click);
             // 
@@ -123,6 +126,7 @@
             this.DAT.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DAT.Location = new System.Drawing.Point(12, 28);
             this.DAT.Name = "DAT";
+            this.DAT.ReadOnly = true;
             this.DAT.RowTemplate.Height = 23;
             this.DAT.Size = new System.Drawing.Size(1326, 618);
             this.DAT.TabIndex = 3;
@@ -183,13 +187,19 @@
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(1228, 649);
+            this.label2.Location = new System.Drawing.Point(1243, 654);
+            this.label2.Margin = new System.Windows.Forms.Padding(5);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(93, 20);
             this.label2.TabIndex = 9;
             this.label2.Text = "记录显示位置";
+            // 
+            // dataBindingSource
+            // 
+            this.dataBindingSource.DataSource = typeof(身份证信息管理系统.Data);
             // 
             // MainForm
             // 
@@ -213,6 +223,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DAT)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -235,5 +246,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.BindingSource dataBindingSource;
     }
 }

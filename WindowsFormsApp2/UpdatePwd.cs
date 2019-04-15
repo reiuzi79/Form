@@ -16,10 +16,69 @@ namespace 身份证信息管理系统
         public UpdatePwd()
         {
             InitializeComponent();
-            Random random = new Random();
-            int minV = 12345, maxV = 98765;
-            checkpic.Text = random.Next(minV, maxV).ToString();
+            checkpic.Text = CheckCode.Code();
         }
+       
+
+        private void checkpic_Click(object sender, EventArgs e)
+        {
+            checkpic.Text = CheckCode.Code();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+            this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (sure.Text.Trim() != newpwd.Text.Trim())
+                {
+                    MessageBox.Show("确认密码和新密码不一致");
+                    checkpic.Text = CheckCode.Code();
+                    return;
+                }
+                if (checkcode.Text.Trim() != checkpic.Text)
+                {
+                    MessageBox.Show("验证码错误");
+                    checkpic.Text = CheckCode.Code();
+                    return;
+                }
+
+                if (acc.Text.Trim() == "" || oldpwd.Text.Trim() == "" || newpwd.Text.Trim() == "" || sure.Text.Trim() == ""
+                    || checkcode.Text.Trim() == "")
+                {
+                    MessageBox.Show("信息不完整");
+                    checkpic.Text = CheckCode.Code();
+                    return;
+                }
+                var BLL = new UpdatePwdBLL();
+                switch(BLL.Access(acc.Text.Trim(), oldpwd.Text.Trim(), newpwd.Text.Trim()))
+                {
+                    case 0:
+                        MessageBox.Show("修改成功");
+                        this.Dispose();
+                        this.Close();
+                        break;
+                    case 1:
+                        MessageBox.Show("修改失败");
+                        break;
+                    case 2:
+                        MessageBox.Show("用户名或原密码错误");
+                        break;
+                }
+                checkpic.Text = CheckCode.Code();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("修改失败，错误信息：\n" + ex);
+            }
+        }
+
+
         Point mouseOff;//鼠标移动位置变量
         bool leftFlag;//标签是否为左键
 
@@ -47,75 +106,6 @@ namespace 身份证信息管理系统
             if (leftFlag)
             {
                 leftFlag = false;//释放鼠标后标注为false;
-            }
-        }
-
-        private void checkpic_Click(object sender, EventArgs e)
-        {
-            Random random = new Random();
-            int minV = 12345, maxV = 98765;
-            checkpic.Text = random.Next(minV, maxV).ToString();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            this.Dispose();
-            this.Close();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string userid = acc.Text.Trim();
-                string connStr = @"Data Source=" + @"Data\Account.db;Initial Catalog=sqlite;Integrated Security=True;Max Pool Size=10";
-                SQLiteConnection con = new SQLiteConnection(connStr);
-                con.Open();
-                SQLiteCommand checkCmd = con.CreateCommand();
-                string s = "SELECT account FROM Accounts WHERE Account='" + userid + "' and Password='" + oldpwd.Text + "'";
-                checkCmd.CommandText = s;
-                SQLiteDataAdapter check = new SQLiteDataAdapter();
-                check.SelectCommand = checkCmd;
-                DataSet checkData = new DataSet();
-                int n = check.Fill(checkData, "Accounts");
-                if (n == 0)
-                {
-                    MessageBox.Show("用户名不存在或原密码错误");
-                }
-                if (sure.Text != newpwd.Text)
-                {
-                    MessageBox.Show("确认密码和新密码不一致");
-                }
-                if (checkcode.Text != checkpic.Text)
-                {
-                    MessageBox.Show("验证码错误");
-                    Random random = new Random();
-                    int minV = 12345, maxV = 98765;
-                    checkpic.Text = random.Next(minV, maxV).ToString();
-                }
-
-                if (acc.Text == "" || oldpwd.Text == "" || newpwd.Text == "" || sure.Text == ""
-                    || checkcode.Text == "")
-                {
-                    MessageBox.Show("信息不完整");
-                }
-                if ((acc.Text == "" || oldpwd.Text == "" || newpwd.Text == "" || sure.Text == ""
-                    || checkcode.Text == "") == false && (checkcode.Text != checkpic.Text) == false && (sure.Text != newpwd.Text) == false && n != 0)
-                {
-                    string s1 = "update Accounts set Password = '" + newpwd.Text + "' where Account = '" + acc.Text + "'";
-                    SQLiteCommand com = new SQLiteCommand(s1, con);
-                    com.ExecuteNonQuery();
-                    con.Close();
-                    com = null;
-                    con.Dispose();
-                    MessageBox.Show("修改成功");
-                    this.Dispose();
-                    this.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("修改失败，错误信息：\n" + ex);
             }
         }
     }

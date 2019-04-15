@@ -95,6 +95,7 @@
       <DependentUpon>Add.cs</DependentUpon>
     </Compile>
     <Compile Include="CheckCode.cs" />
+    <Compile Include="Data.cs" />
     <Compile Include="DataBase.cs" />
     <Compile Include="Delete.cs">
       <SubType>Form</SubType>
@@ -116,6 +117,8 @@
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainBLL.cs" />
+    <Compile Include="MainDAL.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +127,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Regions.cs" />
+    <Compile Include="RegisterBLL.cs" />
+    <Compile Include="RegisterDAL.cs" />
     <Compile Include="RegisterForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,6 +154,8 @@
     <Compile Include="UpdatePwd.Designer.cs">
       <DependentUpon>UpdatePwd.cs</DependentUpon>
     </Compile>
+    <Compile Include="UpdatePwdBLL.cs" />
+    <Compile Include="UpdatePwdDAL.cs" />
     <Compile Include="User.cs" />
     <EmbeddedResource Include="AboutBox1.resx">
       <DependentUpon>AboutBox1.cs</DependentUpon>
@@ -191,6 +199,7 @@
     <None Include="data\Regions.db" />
     <None Include="data\sqlite3.lib" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Data.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

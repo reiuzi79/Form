@@ -6,19 +6,18 @@ using System.Threading.Tasks;
 
 namespace 身份证信息管理系统
 {
-    public class LoginDAL //Data Access Layer of LoginForm
+    class RegisterDAL
     {
-        public bool Access(string Account,string Password)
+        public bool Insert(string Account, string Password, string Nickname) 
         {
             try
             {
                 using (var db = new UserContext())
                 {
-                    var b = db.Users.Where(a => a.Account.Equals(Account) && a.Password.Equals(Password)).Select(a => a.Nickname).FirstOrDefault(); //选对应昵称
-                    if (b != null)
+                    if (db.Users.Count(a => a.Account.Equals(Account)) == 0) //判断账号是否存在
                     {
-                        //var c = db.Users.Where(a => a.Account.Equals(Account) && a.Password.Equals(Password)).Select(a => a.Nickname);
-                        LoginBLL.User.Nickname = b;
+                        db.Users.AddRange(new List<User>() { new User() { Account = Account, Password = Password, Nickname = Nickname } });
+                        db.SaveChanges();
                         return true;
                     }
                     return false;

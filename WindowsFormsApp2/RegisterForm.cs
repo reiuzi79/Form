@@ -16,16 +16,12 @@ namespace 身份证信息管理系统
         public RegisterForm()
         {
             InitializeComponent();
-            Random random = new Random();
-            int minV = 12345, maxV = 98765;
-            checkpic.Text = random.Next(minV, maxV).ToString();
+            checkpic.Text = CheckCode.Code();
         }
 
         private void check_Click(object sender, EventArgs e)
         {
-            Random random = new Random();
-            int minV = 12345, maxV = 98765;
-            checkpic.Text = random.Next(minV, maxV).ToString();
+            checkpic.Text = CheckCode.Code();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -38,51 +34,39 @@ namespace 身份证信息管理系统
         {
             try
             {
-                string userid = acc.Text.Trim();
-                string connStr = @"Data Source=" + @"Data\Account.db;Initial Catalog=sqlite;Integrated Security=True;Max Pool Size=10";
-                SQLiteConnection con = new SQLiteConnection(connStr);
-                con.Open();
-                SQLiteCommand checkCmd = con.CreateCommand();
-                string s = "SELECT account FROM Accounts WHERE Account='" + userid + "'";
-                checkCmd.CommandText = s;
-                SQLiteDataAdapter check = new SQLiteDataAdapter();
-                check.SelectCommand = checkCmd;
-                DataSet checkData = new DataSet();
-                int n = check.Fill(checkData, "Accounts");
-                if (n != 0)
-                {
-                    MessageBox.Show("用户名存在");
-                }
                 if (surepwd.Text != pwd.Text)
                 {
                     MessageBox.Show("确认密码和密码不一致");
+                    checkpic.Text = CheckCode.Code();
+                    return;
                 }
                 if (checkcode.Text != checkpic.Text)
                 {
                     MessageBox.Show("验证码错误");
-                    Random random = new Random();
-                    int minV = 12345, maxV = 98765;
-                    checkpic.Text = random.Next(minV, maxV).ToString();
+                    checkpic.Text = CheckCode.Code();
+                    return;
                 }
-
-                if (acc.Text == "" || pwd.Text == "" || nick.Text == "" || surepwd.Text == ""
+                if (acc.Text.Trim() == "" || pwd.Text.Trim() == "" || nick.Text.Trim() == "" || surepwd.Text == ""
                     || checkcode.Text == "")
                 {
                     MessageBox.Show("信息不完整");
+                    checkpic.Text = CheckCode.Code();
+                    return;
                 }
-                if ((acc.Text == "" || pwd.Text == "" || nick.Text == "" || surepwd.Text == ""
-                    || checkcode.Text == "") == false && (checkcode.Text != checkpic.Text) == false && (surepwd.Text != pwd.Text) == false && n == 0)
+                var BLL = new RegisterBLL();
+                switch(BLL.Access(acc.Text.Trim(), pwd.Text.Trim(), nick.Text.Trim()))
                 {
-                    string s1 = "insert into Accounts(Account,Password,Nickname) values ('" + acc.Text + "','" + pwd.Text + "','"
-                    + nick.Text + "')";
-                    SQLiteCommand com = new SQLiteCommand(s1, con);
-                    com.ExecuteNonQuery();
-                    con.Close();
-                    com = null;
-                    con.Dispose();
-                    MessageBox.Show("注册成功");
-                    this.Dispose();
-                    this.Close();
+                    case 0:
+                        MessageBox.Show("注册成功");
+                        this.Dispose();
+                        this.Close();
+                        break;
+                    case 1:
+                        MessageBox.Show("注册失败");
+                        break;
+                    case 2:
+                        MessageBox.Show("用户名存在");
+                        break;
                 }
             }
             catch (Exception ex)

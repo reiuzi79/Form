@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace 身份证信息管理系统
 {
-    internal class Data
+    internal class Data1
     {
         private static string connStr = @"Data Source=" + @"Data\Data.db;Initial Catalog=sqlite;Integrated Security=True;Max Pool Size=10";
         public static int ExecuteNoQuery(string sql)

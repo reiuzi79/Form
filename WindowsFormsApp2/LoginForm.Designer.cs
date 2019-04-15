@@ -87,7 +87,7 @@
             this.label3.Location = new System.Drawing.Point(66, 110);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(38, 21);
-            this.label3.TabIndex = 8;
+            this.label3.TabIndex = 9;
             this.label3.Text = "密码";
             // 
             // label4
@@ -95,7 +95,7 @@
             this.label4.Location = new System.Drawing.Point(66, 70);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(38, 23);
-            this.label4.TabIndex = 7;
+            this.label4.TabIndex = 9;
             this.label4.Text = "账号";
             // 
             // checkcode
@@ -119,7 +119,7 @@
             this.login.Location = new System.Drawing.Point(41, 197);
             this.login.Name = "login";
             this.login.Size = new System.Drawing.Size(75, 23);
-            this.login.TabIndex = 4;
+            this.login.TabIndex = 6;
             this.login.Text = "登录";
             this.login.UseVisualStyleBackColor = true;
             this.login.Click += new System.EventHandler(this.login_Click);
@@ -129,7 +129,7 @@
             this.regist.Location = new System.Drawing.Point(142, 197);
             this.regist.Name = "regist";
             this.regist.Size = new System.Drawing.Size(75, 23);
-            this.regist.TabIndex = 3;
+            this.regist.TabIndex = 7;
             this.regist.Text = "注册";
             this.regist.UseVisualStyleBackColor = true;
             this.regist.Click += new System.EventHandler(this.regist_Click);
@@ -139,7 +139,7 @@
             this.cancel.Location = new System.Drawing.Point(318, 197);
             this.cancel.Name = "cancel";
             this.cancel.Size = new System.Drawing.Size(75, 23);
-            this.cancel.TabIndex = 2;
+            this.cancel.TabIndex = 8;
             this.cancel.Text = "取消";
             this.cancel.UseVisualStyleBackColor = true;
             this.cancel.Click += new System.EventHandler(this.cancel_Click);
@@ -151,7 +151,7 @@
             this.check.Location = new System.Drawing.Point(220, 148);
             this.check.Name = "check";
             this.check.Size = new System.Drawing.Size(67, 23);
-            this.check.TabIndex = 1;
+            this.check.TabIndex = 4;
             this.check.Text = "12345";
             this.check.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.check.Click += new System.EventHandler(this.check_Click);
@@ -183,9 +183,10 @@
             this.button1.Location = new System.Drawing.Point(319, 105);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(74, 23);
-            this.button1.TabIndex = 12;
+            this.button1.TabIndex = 5;
             this.button1.Text = "修改密码";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // LoginForm
             // 
