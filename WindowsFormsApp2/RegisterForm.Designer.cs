@@ -154,7 +154,7 @@
             this.checkpic.Size = new System.Drawing.Size(72, 26);
             this.checkpic.TabIndex = 14;
             this.checkpic.Text = "56423";
-            this.checkpic.Click += new System.EventHandler(this.check_Click);
+            this.checkpic.Click += new System.EventHandler(this.Check_Click);
             // 
             // label1
             // 
@@ -179,7 +179,7 @@
             this.regist.TabIndex = 16;
             this.regist.Text = "注册";
             this.regist.UseVisualStyleBackColor = true;
-            this.regist.Click += new System.EventHandler(this.regist_Click);
+            this.regist.Click += new System.EventHandler(this.Regist_Click);
             // 
             // okCheckbox
             // 
@@ -192,7 +192,7 @@
             this.okCheckbox.TabIndex = 17;
             this.okCheckbox.Text = "同意《用户协议》";
             this.okCheckbox.UseVisualStyleBackColor = false;
-            this.okCheckbox.CheckedChanged += new System.EventHandler(this.okCheckbox_CheckedChanged);
+            this.okCheckbox.CheckedChanged += new System.EventHandler(this.OkCheckbox_CheckedChanged);
             // 
             // button1
             // 
@@ -203,7 +203,7 @@
             this.button1.TabIndex = 18;
             this.button1.Text = "取消";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // RegisterForm
             // 

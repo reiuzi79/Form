@@ -21,22 +21,22 @@ namespace 身份证信息管理系统
             check.Text = CheckCode.Code();   //生成验证码
         }
 
-        private void check_Click(object sender, EventArgs e)
+        private void Check_Click(object sender, EventArgs e)
         {
             check.Text = CheckCode.Code();
         }
 
-        private void cancel_Click(object sender, EventArgs e)
+        private void Cancel_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void regist_Click(object sender, EventArgs e)
+        private void Regist_Click(object sender, EventArgs e)
         {
             RegisterForm register = new RegisterForm();
             register.ShowDialog();
         }
-        private void login_Click(object sender, EventArgs e)
+        private void Login_Click(object sender, EventArgs e)
         {
             try
             {
@@ -110,7 +110,7 @@ namespace 身份证信息管理系统
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             UpdatePwd u = new UpdatePwd();
             u.ShowDialog();

@@ -122,7 +122,7 @@
             this.login.TabIndex = 6;
             this.login.Text = "登录";
             this.login.UseVisualStyleBackColor = true;
-            this.login.Click += new System.EventHandler(this.login_Click);
+            this.login.Click += new System.EventHandler(this.Login_Click);
             // 
             // regist
             // 
@@ -132,7 +132,7 @@
             this.regist.TabIndex = 7;
             this.regist.Text = "注册";
             this.regist.UseVisualStyleBackColor = true;
-            this.regist.Click += new System.EventHandler(this.regist_Click);
+            this.regist.Click += new System.EventHandler(this.Regist_Click);
             // 
             // cancel
             // 
@@ -142,7 +142,7 @@
             this.cancel.TabIndex = 8;
             this.cancel.Text = "取消";
             this.cancel.UseVisualStyleBackColor = true;
-            this.cancel.Click += new System.EventHandler(this.cancel_Click);
+            this.cancel.Click += new System.EventHandler(this.Cancel_Click);
             // 
             // check
             // 
@@ -154,7 +154,7 @@
             this.check.TabIndex = 4;
             this.check.Text = "12345";
             this.check.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.check.Click += new System.EventHandler(this.check_Click);
+            this.check.Click += new System.EventHandler(this.Check_Click);
             // 
             // groupBox1
             // 
@@ -186,7 +186,7 @@
             this.button1.TabIndex = 5;
             this.button1.Text = "修改密码";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // LoginForm
             // 

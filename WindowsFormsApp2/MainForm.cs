@@ -13,31 +13,14 @@ namespace 身份证信息管理系统
 {
     public partial class MainForm : Form
     {
-        [StructLayout(LayoutKind.Sequential, Pack = 1, CharSet = CharSet.Auto)]
-        public struct INFOR
-        {
-            public Int32 year;
-            public Int32 month;
-            public Int32 day;
-            public Int32 age;
-            public Int32 sex;
-        };
-        [DllImport("Data\\ID_ANALYSIS.dll", EntryPoint = "dllin", CallingConvention = CallingConvention.Cdecl)]
-        public static extern INFOR dllin(string id);
-        private string Acc1;
-        public string acc1
-        {
-            get { return Acc1; }
-            set { Acc1 = value; }
-        }
-        DataTable dt = new DataTable();
+        public string Acc1 { get; set; }
         public MainForm(string acc)
         {
             InitializeComponent();
-            acc1 = acc;
-            reFresh();
+            Acc1 = acc;
+            ReFresh();
         }
-        internal void setDATSizeMode() //设置DataGridView控件列尺寸以适应数据
+        internal void SetDATSizeMode() //设置DataGridView控件列尺寸以适应数据
         {
             DAT.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             DAT.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
@@ -46,76 +29,61 @@ namespace 身份证信息管理系统
             DAT.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             DAT.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
         }
-        internal void reFresh()
+        internal void ReFresh()
         {
-            ac.Text = "当前用户为" + acc1;
-            if (acc1 == "admin")
+            try
             {
-                ac.Text += "，为超级管理员";
+                ac.Text = "当前用户为" + Acc1;
+                if (Acc1 == "admin")
+                {
+                    ac.Text += "，为超级管理员";
+                }
+                else
+                {
+                    button2.Enabled = false;
+                    button3.Enabled = false;
+                    ac.Text += "，为普通用户，无法使用删改功能";
+                }
+                var BLL = new MainBLL();
+                DAT.DataSource = BLL.Refresh();
+                SetDATSizeMode();
+                label2.Text = "有" + DAT.RowCount + "条记录";
             }
-            else
+            catch(Exception e)
             {
-                button2.Enabled = false;
-                button3.Enabled = false;
-                ac.Text += "，为普通用户，无法使用删改功能";
+                MessageBox.Show("出现异常，原因：\n" + e);
             }
-            var BLL = new MainBLL();
-            DAT.DataSource = BLL.Refresh();
-            setDATSizeMode();
-            label2.Text = "有" + DAT.RowCount + "条记录";
         }
         private void 刷新ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            reFresh();
+            ReFresh();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)   //添加数据
         {
-            Add add = new Add();
-            add.ShowDialog();
-            bool flag = true;
-            while (add.IsDisposed == true && flag == true)
+            var BLL = new MainBLL();
+            BLL.Add();
+            ReFresh();
+        }
+        
+
+        private void Button4_Click(object sender, EventArgs e)  //查询数据
+        {
+            var BLL = new MainBLL();
+            var Result = BLL.Select();
+            if (Result != null)  //查询到才更新显示控件
             {
-                flag = false;
-                reFresh();
-            }
-        }
-        private static DataSet ds2;
-        public static void DoSomething(DataSet ds1)
-        {
-            ds2 = ds1;
-        }
-        private static bool dsflag;
-        public static void DoSomething1(bool dsflag1)
-        {
-            dsflag = dsflag1;
-        }
-        private void button4_Click(object sender, EventArgs e)
-        {
-            Select s = new Select();
-            s.ShowDialog(this);
-            bool flag1 = true;
-            while (s.IsDisposed == true && flag1 == true && dsflag == true)
-            {
-                flag1 = false;
-                dsflag = false;
-                dt = ds2.Tables[0];
-                DAT.DataSource = dt;
-                setDATSizeMode();
-                label2.Text = "有" + dt.Rows.Count + "条记录";
+                DAT.DataSource = Result;
+                SetDATSizeMode();
+                label2.Text = "有" + DAT.RowCount + "条记录";
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Button2_Click(object sender, EventArgs e)  //删除数据
         {
-            Delete d = new Delete();
-            d.ShowDialog();
-            bool flag = true;
-            while (d.IsDisposed == true && flag == true)
-            {
-                flag = false;
-                reFresh();
-            }
+            var BLL = new MainBLL();
+            BLL.Delete();
+            ReFresh();
         }
 
         private void 退出ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -125,21 +93,16 @@ namespace 身份证信息管理系统
                 Application.Exit();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void Button3_Click(object sender, EventArgs e)   //更改数据
         {
-            Update u = new Update();
-            u.ShowDialog();
-            bool flag = true;
-            while (u.IsDisposed == true && flag == true)
-            {
-                flag = false;
-                reFresh();
-            }
+            var BLL = new MainBLL();
+            BLL.Update();
+            ReFresh();
         }
 
         private void 关于本系统ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AboutBox1 a = new AboutBox1();
+            AboutBox a = new AboutBox();
             a.ShowDialog();
         }
 

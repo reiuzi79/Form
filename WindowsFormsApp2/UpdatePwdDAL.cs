@@ -14,15 +14,20 @@ namespace 身份证信息管理系统
             {
                 using (var db = new UserContext())
                 {
-                    var b = db.Users.Count(a => a.Account.Equals(Account) && a.Password.Equals(Password));
+                    var PasswordMD5 = MD5Creating.EncryptWithMD5(Password);
+                    var b = db.Users.Count(a => a.Account.Equals(Account) && a.Password.Equals(PasswordMD5));
                     if (b != 0) //查账号和原密码
                     {
                         var c = db.Users.Where(a => a.Account.Equals(Account));
-                        c.FirstOrDefault().Password = newPassword;
+                        PasswordMD5 = MD5Creating.EncryptWithMD5(newPassword);
+                        c.FirstOrDefault().Password = PasswordMD5;
                         db.SaveChanges();
                         return true;
                     }
-                    return false;
+                    else
+                    {
+                        return false;
+                    }
                 }
             }
             catch (Exception e)

@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace 身份证信息管理系统
 {
-    partial class AboutBox1 : Form
+    partial class AboutBox : Form
     {
-        public AboutBox1()
+        public AboutBox()
         {
             InitializeComponent();
             this.Text = String.Format("关于 {0}", AssemblyTitle);
@@ -101,11 +101,5 @@ namespace 身份证信息管理系统
             }
         }
         #endregion
-
-        private void okButton_Click(object sender, EventArgs e)
-        {
-            this.Dispose();
-            this.Close();
-        }
     }
 }

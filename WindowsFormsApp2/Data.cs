@@ -20,6 +20,7 @@ namespace 身份证信息管理系统
         [Key]
         public string ID { get; set; }
         public string Region { get; set; }
+        public string Birthday { get; set; }
         public short Age { get; set; }
         public string Gender { get; set; }
         public string Remark { get; set; }
@@ -36,7 +37,7 @@ namespace 身份证信息管理系统
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            ModelConfiguration.Configure(modelBuilder);
+            ModelConfiguration.ConfigureData(modelBuilder);
             var init = new SqliteDropCreateDatabaseWhenModelChanges<DataContext>(modelBuilder);
             Database.SetInitializer(init);
         }

@@ -1,7 +1,6 @@
 #pragma once
 
 typedef struct{
-	char region[100];
 	int year;
 	int month;
 	int day;

@@ -32,7 +32,7 @@ namespace 身份证信息管理系统
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            ModelConfiguration.Configure(modelBuilder);
+            ModelConfiguration.ConfigureUser(modelBuilder);
             var init = new SqliteDropCreateDatabaseWhenModelChanges<UserContext>(modelBuilder);
             Database.SetInitializer(init);
         }
@@ -40,13 +40,21 @@ namespace 身份证信息管理系统
 
     public class ModelConfiguration
     {
-        public static void Configure(DbModelBuilder modelBuilder)
+        public static void ConfigureUser(DbModelBuilder modelBuilder)
         {
-            ConfigureBookEntity(modelBuilder);
+            ConfigureBookEntityUser(modelBuilder);
         }
-        private static void ConfigureBookEntity(DbModelBuilder modelBuilder)
+        public static void ConfigureData(DbModelBuilder modelBuilder)
+        {
+            ConfigureBookEntityData(modelBuilder);
+        }
+        private static void ConfigureBookEntityUser(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>();
+        }
+        private static void ConfigureBookEntityData(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Data>();
         }
     }
 }

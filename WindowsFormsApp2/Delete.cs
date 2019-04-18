@@ -16,44 +16,17 @@ namespace 身份证信息管理系统
         public Delete()
         {
             InitializeComponent();
-            string connStr = @"Data Source=" + @"Data\Data.db;Initial Catalog=sqlite;Integrated Security=True;Max Pool Size=10";
-            SQLiteConnection con = new SQLiteConnection(connStr);
-            con.Open();
-            SQLiteCommand com = new SQLiteCommand();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             try
             {
                 DialogResult dr = MessageBox.Show("确定删除？", "提示", MessageBoxButtons.OKCancel);
                 if (dr == DialogResult.OK)
                 {
-                    int i = 0;
-                    string connStr = @"Data Source=" + @"Data\Data.db;Initial Catalog=sqlite;Integrated Security=True;Max Pool Size=10";
-                    SQLiteConnection con = new SQLiteConnection(connStr);
-                    con.Open();
-                    SQLiteCommand com = new SQLiteCommand();
-                    com.Connection = con;
-                    textBox1.Text = textBox1.Text.ToUpper();
-                    if (textBox1.Text.Contains(",") || textBox1.Text.Contains("，"))
-                    {
-                        textBox1.Text.Replace('，', ',');
-                        string[] str = textBox1.Text.Split(new char[] { ',' });
-                        foreach (string s1 in str)
-                        {
-                            com.CommandText = "DELETE FROM admin WHERE ID = '" + s1 + "'";
-                            i += com.ExecuteNonQuery();
-                        }
-                    }
-                    else
-                    {
-                        com.CommandText = "DELETE FROM admin WHERE ID = '" + textBox1.Text.Trim() + "'";
-                        i = com.ExecuteNonQuery();
-                    }
-                    MessageBox.Show("操作成功，共删除" + i + "条数据");
-                    con.Close();
-                    com = null;
+                    var BLL = new DeleteBLL();
+                    MessageBox.Show("已删除" + BLL.Delete(textBox1.Text.Trim(), 1) + "条数据");
                     this.Dispose();
                     this.Close();
                 }
@@ -63,23 +36,15 @@ namespace 身份证信息管理系统
                 MessageBox.Show("删除失败，异常原因：\n" + ex);
             }
         }
-        private void button3_Click(object sender, EventArgs e)
+        private void Button3_Click(object sender, EventArgs e)
         {
             try
             {
                 DialogResult dr = MessageBox.Show("确定删除全部数据？", "提示", MessageBoxButtons.OKCancel);
                 if (dr == DialogResult.OK)
                 {
-                    int i;
-                    string connStr = @"Data Source=" + @"Data\Data.db;Initial Catalog=sqlite;Integrated Security=True;Max Pool Size=10";
-                    SQLiteConnection con = new SQLiteConnection(connStr);
-                    con.Open();
-                    SQLiteCommand com = new SQLiteCommand(con);
-                    com.CommandText = "DELETE FROM admin";
-                    i = com.ExecuteNonQuery();
-                    MessageBox.Show("操作成功，共删除" + i + "条数据");
-                    con.Close();
-                    com = null;
+                    var BLL = new DeleteBLL();
+                    MessageBox.Show("已删除" + BLL.Delete(null, 0) + "条数据");
                     this.Dispose();
                     this.Close();
                 }
@@ -89,11 +54,15 @@ namespace 身份证信息管理系统
                 MessageBox.Show("删除失败，异常原因：\n" + ex);
             }
         }
-        private void button2_Click(object sender, EventArgs e)
+        private void Button2_Click(object sender, EventArgs e)
         {
             this.Dispose();
             this.Close();
         }
+
+
+
+
         Point mouseOff;//鼠标移动位置变量
         bool leftFlag;//标签是否为左键
         private void Delete_MouseDown(object sender, MouseEventArgs e)

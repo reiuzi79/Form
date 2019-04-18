@@ -16,11 +16,15 @@ namespace 身份证信息管理系统
                 {
                     if (db.Users.Count(a => a.Account.Equals(Account)) == 0) //判断账号是否存在
                     {
-                        db.Users.AddRange(new List<User>() { new User() { Account = Account, Password = Password, Nickname = Nickname } });
+                        var PasswordMD5 = MD5Creating.EncryptWithMD5(Password);
+                        db.Users.AddRange(new List<User>() { new User() { Account = Account, Password = PasswordMD5, Nickname = Nickname } });
                         db.SaveChanges();
                         return true;
                     }
-                    return false;
+                    else
+                    {
+                        return false;
+                    }
                 }
             }
             catch(Exception ex)

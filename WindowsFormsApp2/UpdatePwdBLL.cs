@@ -13,11 +13,14 @@ namespace 身份证信息管理系统
             try
             {
                 var DAL = new UpdatePwdDAL();
-                if(DAL.Update(Account, Password, newPassword) == true)
+                if (DAL.Update(Account, Password, newPassword) == true)
                 {
                     return 0;
                 }
-                return 2;
+                else
+                {
+                    return 2;
+                }
             }
             catch
             {

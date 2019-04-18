@@ -19,18 +19,18 @@ namespace 身份证信息管理系统
             checkpic.Text = CheckCode.Code();
         }
 
-        private void check_Click(object sender, EventArgs e)
+        private void Check_Click(object sender, EventArgs e)
         {
             checkpic.Text = CheckCode.Code();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             this.Dispose();
             this.Close();
         }
 
-        private void regist_Click(object sender, EventArgs e)
+        private void Regist_Click(object sender, EventArgs e)
         {
             try
             {
@@ -61,9 +61,6 @@ namespace 身份证信息管理系统
                         this.Dispose();
                         this.Close();
                         break;
-                    case 1:
-                        MessageBox.Show("注册失败");
-                        break;
                     case 2:
                         MessageBox.Show("用户名存在");
                         break;
@@ -75,7 +72,7 @@ namespace 身份证信息管理系统
             }
         }
 
-        private void okCheckbox_CheckedChanged(object sender, EventArgs e)
+        private void OkCheckbox_CheckedChanged(object sender, EventArgs e)
         {
             if (okCheckbox.Checked == false)
             {

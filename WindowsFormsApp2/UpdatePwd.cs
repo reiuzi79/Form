@@ -20,18 +20,18 @@ namespace 身份证信息管理系统
         }
        
 
-        private void checkpic_Click(object sender, EventArgs e)
+        private void Checkpic_Click(object sender, EventArgs e)
         {
             checkpic.Text = CheckCode.Code();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Button2_Click(object sender, EventArgs e)
         {
             this.Dispose();
             this.Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             try
             {

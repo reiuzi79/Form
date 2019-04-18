@@ -22,7 +22,8 @@ namespace 身份证信息管理系统
                     var b = db.Users.Count(a => a.Account.Equals("admin"));  //检查是否有管理员账户
                     if (b == 0)
                     {
-                        db.Users.AddRange(new List<User>() { new User() { Account = "admin", Password = "admin", Nickname = "admin" } }); //添加管理员账户
+                        var AdminMD5 = MD5Creating.EncryptWithMD5("admin");
+                        db.Users.AddRange(new List<User>() { new User() { Account = "admin", Password = AdminMD5, Nickname = "admin" } }); //添加管理员账户
                         db.SaveChanges();
                     }
                 }

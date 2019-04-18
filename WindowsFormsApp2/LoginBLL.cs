@@ -16,7 +16,8 @@ namespace 身份证信息管理系统
             public string Account { get => _Account; set => _Account = value; }
             public string Password { get => _Password; set => _Password = value; }
         }
-        User user = new User();
+
+        readonly User user = new User();
         public LoginBLL() { }
         public LoginBLL(string Account,string Password)
         {

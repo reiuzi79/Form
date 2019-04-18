@@ -22,6 +22,7 @@ namespace 身份证信息管理系统
             this.Dispose();
             this.Close();
         }
+
         Point mouseOff;//鼠标移动位置变量
         bool leftFlag;//标签是否为左键
         private void Help_MouseDown(object sender, MouseEventArgs e)

@@ -143,7 +143,7 @@
             this.checkpic.Size = new System.Drawing.Size(67, 25);
             this.checkpic.TabIndex = 17;
             this.checkpic.Text = "58139";
-            this.checkpic.Click += new System.EventHandler(this.checkpic_Click);
+            this.checkpic.Click += new System.EventHandler(this.Checkpic_Click);
             // 
             // checkcode
             // 
@@ -172,7 +172,7 @@
             this.button1.TabIndex = 18;
             this.button1.Text = "确定";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // button2
             // 
@@ -182,7 +182,7 @@
             this.button2.TabIndex = 19;
             this.button2.Text = "取消";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
             // label6
             // 

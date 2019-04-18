@@ -13,15 +13,18 @@ namespace 身份证信息管理系统
             try
             {
                 var DAL = new RegisterDAL();
-                if(DAL.Insert(Account, Password, Nickname)==true) //插入成功则返回0
+                if (DAL.Insert(Account, Password, Nickname) == true) //插入成功则返回0
                 {
                     return 0;
                 }
-                return 2;
+                else
+                {
+                    return 2;
+                }
             }
-            catch
+            catch(Exception e)
             {
-                return 1;
+                throw e;
             }
         }
     }
