@@ -82,7 +82,9 @@
     <Reference Include="SQLite.CodeFirst, Version=1.5.0.22, Culture=neutral, PublicKeyToken=eb96ba0a78d831a7, processorArchitecture=MSIL">
       <HintPath>..\packages\SQLite.CodeFirst.1.5.0.22\lib\net45\SQLite.CodeFirst.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SQLite, Version=1.0.110.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
@@ -285,8 +287,11 @@
     <Error Condition="!Exists('..\packages\System.Data.SQLite.Core.1.0.110.0\build\net46\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Data.SQLite.Core.1.0.110.0\build\net46\System.Data.SQLite.Core.targets'))" />
   </Target>
   <PropertyGroup>
-    <PostBuildEvent>Copy  "$(ProjectDir)data\CHECKER.dll"  "$(ProjectDir)$(OutDir)data\"
-Copy  "$(ProjectDir)data\Regions.db"  "$(ProjectDir)$(OutDir)data\"
-Copy  "$(ProjectDir)data\ID_ANALYSIS.dll"  "$(ProjectDir)$(OutDir)data\"</PostBuildEvent>
+    <PostBuildEvent>md "$(ProjectDir)$(OutDir)data\"
+ Copy  "$(ProjectDir)data\CHECKER.dll"  "$(ProjectDir)$(OutDir)data\"
+
+ Copy  "$(ProjectDir)data\Regions.db"  "$(ProjectDir)$(OutDir)data\"
+
+ Copy  "$(ProjectDir)data\ID_ANALYSIS.dll"  "$(ProjectDir)$(OutDir)data\"</PostBuildEvent>
   </PropertyGroup>
 </Project>

@@ -44,22 +44,11 @@ namespace 身份证信息管理系统
                 {
                     string Account = account.Text.Trim();
                     string Password = psw.Text.Trim();
-                    LoginBLL BLL = new LoginBLL(Account, Password); //扔给BLL处理，只需告诉UI是否登录成功
-                    if(BLL.Validate()==true)    //验证通过
-                    {
-                        MessageBox.Show("登录成功，欢迎" + LoginBLL.User.Nickname + "用户使用");
-                        Acc = Account;
-                        this.DialogResult = DialogResult.OK;  //启动主窗体
-                    }
-                    else
-                    {
-                        MessageBox.Show("用户名或密码有错误!");
-                        account.Text = "";
-                        psw.Text = "";
-                        checkcode.Text = "";
-                        account.Focus();
-                        check.Text = CheckCode.Code();
-                    }
+                    LoginBLL BLL = new LoginBLL(); //扔给BLL处理
+                    var Result = BLL.Validate(Account, Password);
+                    MessageBox.Show("登录成功，欢迎" + Result.Nickname + "用户使用");
+                    Acc = Account;
+                    this.DialogResult = DialogResult.OK;  //告知Program.cs 启动主窗体
                 }
                 else
                 {
@@ -71,7 +60,15 @@ namespace 身份证信息管理系统
             }
             catch (Exception ex)
             {
-                MessageBox.Show("登录失败，错误信息：\n" + ex);
+                MessageBox.Show("登录失败，错误信息：\n" + ex.Message);
+            }
+            finally
+            {
+                account.Text = "";
+                psw.Text = "";
+                checkcode.Text = "";
+                account.Focus();
+                check.Text = CheckCode.Code();
             }
         }
 

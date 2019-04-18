@@ -8,34 +8,19 @@ namespace 身份证信息管理系统
 {
     public class LoginBLL //登录界面业务逻辑层
     {
-        public class User
-        {
-            string _Account;
-            string _Password;
-            public static string Nickname="";
-            public string Account { get => _Account; set => _Account = value; }
-            public string Password { get => _Password; set => _Password = value; }
-        }
-
-        readonly User user = new User();
-        public LoginBLL() { }
-        public LoginBLL(string Account,string Password)
-        {
-            user.Account = Account;
-            user.Password = Password;
-        }
-        public bool Validate()
+        public User Validate(string Account, string Password)
         {
             try
             {
                 var DAL = new LoginDAL();
-                if (DAL.Access(user.Account, user.Password) == true)
+                var Result = DAL.Access(Account, Password);
+                if (Result != null)
                 {
-                    return true;
+                    return Result;
                 }
                 else
                 {
-                    return false;
+                    throw new Exception("用户名或密码错误");
                 }
             }
             catch(Exception ex)

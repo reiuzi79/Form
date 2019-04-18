@@ -23,7 +23,7 @@ namespace 身份证信息管理系统
                     }
                     var i = new InformationAnal();
                     var IDSet = db.Datas.Select(a => a.ID);
-                    foreach(var ID in IDSet)
+                    foreach (var ID in IDSet)
                     {
                         var Infor = i.Analysis(ID);  //身份证号分析
                         var IDResult = db.Datas.Where(a => a.ID.Equals(ID)).FirstOrDefault();  //更新年龄
@@ -43,7 +43,7 @@ namespace 身份证信息管理系统
                     return db.Datas.Select(a => a).ToList();
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }

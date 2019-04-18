@@ -197,10 +197,6 @@
             this.label2.TabIndex = 9;
             this.label2.Text = "记录显示位置";
             // 
-            // dataBindingSource
-            // 
-            this.dataBindingSource.DataSource = typeof(身份证信息管理系统.Data);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);

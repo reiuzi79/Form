@@ -13,6 +13,7 @@ namespace 身份证信息管理系统
 {
     public partial class MainForm : Form
     {
+        MainBLL BLL = new MainBLL();
         public string Acc1 { get; set; }
         public MainForm(string acc)
         {
@@ -44,7 +45,6 @@ namespace 身份证信息管理系统
                     button3.Enabled = false;
                     ac.Text += "，为普通用户，无法使用删改功能";
                 }
-                var BLL = new MainBLL();
                 DAT.DataSource = BLL.Refresh();
                 SetDATSizeMode();
                 label2.Text = "有" + DAT.RowCount + "条记录";
@@ -61,28 +61,26 @@ namespace 身份证信息管理系统
 
         private void Button1_Click(object sender, EventArgs e)   //添加数据
         {
-            var BLL = new MainBLL();
-            BLL.Add();
+            Add();
             ReFresh();
         }
         
 
         private void Button4_Click(object sender, EventArgs e)  //查询数据
         {
-            var BLL = new MainBLL();
-            var Result = BLL.Select();
+            var Result = Select();
             if (Result != null)  //查询到才更新显示控件
             {
                 DAT.DataSource = Result;
                 SetDATSizeMode();
                 label2.Text = "有" + DAT.RowCount + "条记录";
             }
+            ReFresh();
         }
 
         private void Button2_Click(object sender, EventArgs e)  //删除数据
         {
-            var BLL = new MainBLL();
-            BLL.Delete();
+            Delete();
             ReFresh();
         }
 
@@ -95,8 +93,7 @@ namespace 身份证信息管理系统
 
         private void Button3_Click(object sender, EventArgs e)   //更改数据
         {
-            var BLL = new MainBLL();
-            BLL.Update();
+            Update();
             ReFresh();
         }
 
@@ -110,6 +107,57 @@ namespace 身份证信息管理系统
         {
             Help h = new Help();
             h.ShowDialog();
+        }
+        public void Add()
+        {
+            try
+            {
+                var add = new Add();
+                add.ShowDialog();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+        public new List<Data> Select()  //查询结果返回
+        {
+            try
+            {
+                BLL.ClearDatas();
+                var Select = new Select();
+                Select.ShowDialog();
+                return MainBLL.SelectedDatas;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public void Delete()
+        {
+            try
+            {
+                var Delete = new Delete();
+                Delete.ShowDialog();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+        public new void Update()
+        {
+            try
+            {
+                var Update = new Update();
+                Update.ShowDialog();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
     }
 
