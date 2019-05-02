@@ -1,0 +1,15 @@
+C:\Users\s7995\source\repos\BLL\bin\Release\BLL.dll
+C:\Users\s7995\source\repos\BLL\bin\Release\BLL.pdb
+C:\Users\s7995\source\repos\BLL\bin\Release\DAL.dll
+C:\Users\s7995\source\repos\BLL\bin\Release\EntityFramework.dll
+C:\Users\s7995\source\repos\BLL\bin\Release\SQLite.CodeFirst.dll
+C:\Users\s7995\source\repos\BLL\bin\Release\Method.dll
+C:\Users\s7995\source\repos\BLL\bin\Release\DAL.pdb
+C:\Users\s7995\source\repos\BLL\bin\Release\DAL.dll.config
+C:\Users\s7995\source\repos\BLL\bin\Release\EntityFramework.xml
+C:\Users\s7995\source\repos\BLL\obj\Release\BLL.csprojAssemblyReference.cache
+C:\Users\s7995\source\repos\BLL\obj\Release\BLL.csproj.CoreCompileInputs.cache
+C:\Users\s7995\source\repos\BLL\obj\Release\BLL.csproj.CopyComplete
+C:\Users\s7995\source\repos\BLL\obj\Release\BLL.dll
+C:\Users\s7995\source\repos\BLL\obj\Release\BLL.pdb
+C:\Users\s7995\source\repos\BLL\bin\Release\Method.pdb
