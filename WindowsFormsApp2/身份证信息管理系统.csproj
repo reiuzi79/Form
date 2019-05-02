@@ -73,11 +73,20 @@
     <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BLL">
+      <HintPath>..\..\Users\s7995\source\repos\BLL\bin\Release\BLL.dll</HintPath>
+    </Reference>
+    <Reference Include="DAL">
+      <HintPath>..\..\Users\s7995\source\repos\BLL\bin\Release\DAL.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Method">
+      <HintPath>..\..\Users\s7995\source\repos\BLL\bin\Release\Method.dll</HintPath>
     </Reference>
     <Reference Include="SQLite.CodeFirst, Version=1.5.0.22, Culture=neutral, PublicKeyToken=eb96ba0a78d831a7, processorArchitecture=MSIL">
       <HintPath>..\packages\SQLite.CodeFirst.1.5.0.22\lib\net45\SQLite.CodeFirst.dll</HintPath>
@@ -119,47 +128,32 @@
     <Compile Include="Add.Designer.cs">
       <DependentUpon>Add.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddBLL.cs" />
-    <Compile Include="AddDAL.cs" />
-    <Compile Include="CheckCode.cs" />
-    <Compile Include="Data.cs" />
     <Compile Include="Delete.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Delete.Designer.cs">
       <DependentUpon>Delete.cs</DependentUpon>
     </Compile>
-    <Compile Include="DeleteBLL.cs" />
-    <Compile Include="DeleteDAL.cs" />
     <Compile Include="Help.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Help.Designer.cs">
       <DependentUpon>Help.cs</DependentUpon>
     </Compile>
-    <Compile Include="InformationAnal.cs" />
-    <Compile Include="LoginBLL.cs" />
-    <Compile Include="LoginDAL.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainBLL.cs" />
-    <Compile Include="MainDAL.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MD5Creating.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Regions.cs" />
-    <Compile Include="RegisterBLL.cs" />
-    <Compile Include="RegisterDAL.cs" />
     <Compile Include="RegisterForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,25 +166,18 @@
     <Compile Include="Select.Designer.cs">
       <DependentUpon>Select.cs</DependentUpon>
     </Compile>
-    <Compile Include="SelectBLL.cs" />
-    <Compile Include="SelectDAL.cs" />
     <Compile Include="Update.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Update.Designer.cs">
       <DependentUpon>Update.cs</DependentUpon>
     </Compile>
-    <Compile Include="UpdateBLL.cs" />
-    <Compile Include="UpdateDAL.cs" />
     <Compile Include="UpdatePwd.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UpdatePwd.Designer.cs">
       <DependentUpon>UpdatePwd.cs</DependentUpon>
     </Compile>
-    <Compile Include="UpdatePwdBLL.cs" />
-    <Compile Include="UpdatePwdDAL.cs" />
-    <Compile Include="User.cs" />
     <EmbeddedResource Include="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
