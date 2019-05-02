@@ -1,0 +1,6 @@
+C:\Users\s7995\source\repos\Method\bin\Debug\Method.dll
+C:\Users\s7995\source\repos\Method\bin\Debug\Method.pdb
+C:\Users\s7995\source\repos\Method\obj\Debug\Method.csprojAssemblyReference.cache
+C:\Users\s7995\source\repos\Method\obj\Debug\Method.csproj.CoreCompileInputs.cache
+C:\Users\s7995\source\repos\Method\obj\Debug\Method.dll
+C:\Users\s7995\source\repos\Method\obj\Debug\Method.pdb

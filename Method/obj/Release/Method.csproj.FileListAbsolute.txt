@@ -1,0 +1,5 @@
+C:\Users\s7995\source\repos\Method\bin\Release\Method.dll
+C:\Users\s7995\source\repos\Method\bin\Release\Method.pdb
+C:\Users\s7995\source\repos\Method\obj\Release\Method.csproj.CoreCompileInputs.cache
+C:\Users\s7995\source\repos\Method\obj\Release\Method.dll
+C:\Users\s7995\source\repos\Method\obj\Release\Method.pdb
